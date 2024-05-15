@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -9,11 +10,14 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../https://res.cloudinary.com/drdelhvyt/image/upload/v1715765148/taskpilot/ffomfbsj8j1wjaiqi5r5.jpg>', blank=True
     )
-    # Automatically Query the Tasks Model as soon as this model is rendered , task needs to be owned by the user and status of task needs to be public
+
+def __str__(self):
+    return f"{self.owner}'s profile"
 
     class Meta:
         ordering = ['-created_at']
 
+# Automatically Query the Tasks Model as soon as this model is rendered by related name , task needs to be owned by the user and status of task needs to be public
     @property
     def public_tasks_count(self):
         return self.owner.owned_tasks.filter(is_public=True).count()
@@ -21,4 +25,11 @@ class Profile(models.Model):
     @property
     def joined_tasks_count(self):
         return self.owner.assigned_tasks.filter(is_public=True).count()
+
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(owner=instance)
+
+# Signaling that as soon as a User instances is created , create a profile instance
+post_save.connect(create_profile, sender=User)
 
