@@ -8,12 +8,8 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     bios = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../https://res.cloudinary.com/drdelhvyt/image/upload/v1715765148/taskpilot/ffomfbsj8j1wjaiqi5r5.jpg>', blank=True
+        upload_to='images/', default='../v1715765148/taskpilot/ffomfbsj8j1wjaiqi5r5.jpg>', blank=True
     )
-
-def __str__(self):
-    return f"{self.owner}'s profile"
-
     class Meta:
         ordering = ['-created_at']
 
@@ -25,6 +21,9 @@ def __str__(self):
     @property
     def joined_tasks_count(self):
         return self.owner.assigned_tasks.filter(is_public=True).count()
+
+def __str__(self):
+    return f"{self.owner}'s profile"
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
