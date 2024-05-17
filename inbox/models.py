@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from task.models import Task
+from django.dispatch import receiver
 from messages.models import Messages
 
-class inbox(models.Model):
-    id_of_user = models.OneToOneField(User, on_delete=models.CASCADE)
+class Inbox(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='inbox')
     messages = models.ManyToManyField(Messages)
-    last_updated =models.DateTimeField(auto_now_add=True)
+    last_updated =models.DateTimeField(auto_now=True)
 
     @property
     def public_sent_messages_count(self):
@@ -17,3 +18,10 @@ class inbox(models.Model):
 
     def total_messages(self):
         return self.public_sent_messages_count + self.public_recieved_messages_count()
+
+    @receiver(post_save, sender=User)
+    def create_inbox(sender, instance, created, **kwargs):
+        if created:
+            Inbox.objects.create(user=instance)
+    
+    post_save.connect(create_inbox, sender=User)
