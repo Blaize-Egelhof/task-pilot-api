@@ -6,7 +6,7 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    bios = models.TextField(blank=True)
+    bios = models.TextField(blank=True, default='Create A Bios!')
     image = models.ImageField(
         upload_to='images/', default='/v1715765148/taskpilot/ffomfbsj8j1wjaiqi5r5.jpg>', blank=True
     )
