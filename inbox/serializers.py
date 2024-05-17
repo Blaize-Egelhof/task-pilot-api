@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Inbox
 from messages.serializers import MessageSerializer
+from .models import Inbox
 
 class InboxSerializer(serializers.ModelSerializer):
     messages = MessageSerializer(many=True, read_only=True)

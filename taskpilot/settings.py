@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'profiles',
     'task',
     'inbox',
+    'user_messages',
+    'task_message',
 ]
 
 MIDDLEWARE = [

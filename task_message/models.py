@@ -1,9 +1,10 @@
-# views.py
-from rest_framework import ApiView
+from django.db import models
+from django.contrib.auth.models import User
+from task.models import Task
 
-class TaskMessage(Model.models):
-    sender=models.ForeignKey(User,on_delete=Models.CASCADE)
-    associated_task = models.ForeignKey(Task,on_delete=Models.CASCADE)
+class TaskMessage(models.Model):
+    sender=models.ForeignKey(User,on_delete=models.CASCADE)
+    associated_task = models.ForeignKey(Task,on_delete=models.CASCADE)
     title = models.CharField(max_length=20)
     context = models.CharField(max_length =40)
     timestamp = models.DateTimeField(auto_now_add=True)

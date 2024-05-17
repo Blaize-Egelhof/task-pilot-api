@@ -10,7 +10,7 @@ from rest_framework import status
 from taskpilot.permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 
-class MessageSend(APIView):
+class TaskMessageSend(APIView):
     serializer_class = TaskMessageSerializer
     permission_classes =(IsAuthenticated,)
     def post(self,request,pk):

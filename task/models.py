@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from task_message.models import TaskMessage
 
 class Task(models.Model):
     PRIORITY_CHOICES = [
@@ -37,4 +36,4 @@ class Task(models.Model):
     assigned_users = models.ManyToManyField(User, related_name='assigned_tasks')
     state_changed_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='state_changed_tasks')
     task_visability = models.CharField(max_length=20 , choices=VISABILITY_CHOICES, default='Private')
-    task_messages = models.ManyToManyField(TaskMessage, blank=True)
+    task_messages = models.ManyToManyField('task_message.TaskMessage', blank=True)
