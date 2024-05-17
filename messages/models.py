@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 # default=False for boolean fields
 
-class Message(modles.Model):
+class Message(models.Model):
     related_task = models.OneToOneField(Task,on_delete=models.CASCADE)
     accepted = models.BooleanField(blank=True)  
     declined = models.BooleanField(blank=True)
