@@ -19,9 +19,9 @@ class Inbox(models.Model):
     def total_messages(self):
         return self.public_sent_messages_count + self.public_recieved_messages_count()
 
-    @receiver(post_save, sender=User)
-    def create_inbox(sender, instance, created, **kwargs):
-        if created:
-            Inbox.objects.create(user=instance)
+@receiver(post_save, sender=User)
+def create_inbox(sender, instance, created, **kwargs):
+    if created:
+        Inbox.objects.create(user=instance)
     
     post_save.connect(create_inbox, sender=User)
