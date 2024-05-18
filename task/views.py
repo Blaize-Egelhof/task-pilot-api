@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
 from .models import Task
 from .serializers import TaskSerializer
 from django.http import Http404
@@ -32,7 +34,7 @@ class TaskView(APIView):
         is_member = task.assigned_users.filter(id=request.user.id).exists()
         if is_owner or is_member:
             task = get_object_or_404(Task,pk=pk)
-            serializer = self.serializer_class(task)
+            serializer = self.serializer_class(task,context={'request': request})
             return Response(serializer.data)
         else:
             return Response({'error': 'You do not have permission to view this task.'}, status=status.HTTP_403_FORBIDDEN)

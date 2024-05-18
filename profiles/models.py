@@ -16,11 +16,11 @@ class Profile(models.Model):
 # Automatically Query the Tasks Model as soon as this model is rendered by related name , task needs to be owned by the user and status of task needs to be public
     @property
     def public_tasks_count(self):
-        return self.owner.owned_tasks.filter(is_public=True).count()
+        return self.owner.owned_tasks.filter(task_visability=True).count()
 
     @property
     def joined_tasks_count(self):
-        return self.owner.assigned_tasks.filter(is_public=True).count()
+        return self.owner.assigned_tasks.filter(task_visability=True).count()
 
 def __str__(self):
     return f"{self.owner}'s profile"

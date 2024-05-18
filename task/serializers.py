@@ -8,7 +8,7 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = [
-            'id', 'owner', 'created_at', 'due_date', 'priority', 'category','state','assigned_users','state_changed_by', 'task_visability' , 'title'
+            'id', 'owner', 'created_at', 'due_date', 'priority', 'category','state','assigned_users','state_changed_by', 'task_visability' , 'title','is_owner'
         ]
 
     def get_is_owner(self, obj):
