@@ -9,8 +9,7 @@ class MessageSerializer(serializers.ModelSerializer):
         fields = [
             'related_task', 'accepted', 'declined', 'title', 'context', 
             'recipient_inbox', 'sender', 'read_status', 'date_created', 'is_owner'
-
         ]
     def get_is_owner(self, obj):
         request = self.context['request']
-        return request.user == obj.owner
+        return request.user == obj.sender
