@@ -19,6 +19,7 @@ from django.urls import path,include
 from profiles import urls
 from task import urls
 from inbox import urls
+from user_messages import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('', include('profiles.urls')),
     path('', include('task.urls')),
     path('', include('inbox.urls')),
+    path('', include('user_messages.urls')),
 
 ]

@@ -1,20 +1,21 @@
 from django.shortcuts import render
+from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 from taskpilot.permissions import IsOwnerOrReadOnly
 from inbox.models import Inbox
 from inbox.serializers import InboxSerializer
-from messages.models import Message
-from messages.serializer import MessageSerializer
+from user_messages.models import Message
+from user_messages.serializers import MessageSerializer
 
-class Inbox_View(APIView):
-    permission_classes =[IsOwnerOrReadOnly]
+class InboxView(APIView):
+    permission_classes =[IsAuthenticated]
     serializer_class = InboxSerializer
     
     def get(self,request):
         inbox = get_object_or_404(Inbox, user=request.user)
-        serializer = InboxSerializer(Inbox,context= {'request' : request})
+        serializer = InboxSerializer(inbox,context= {'request' : request})
         return Response(serializer.data)
     
     def put(self, request, pk):
