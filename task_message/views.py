@@ -12,15 +12,30 @@ from django.shortcuts import get_object_or_404
 
 class TaskMessageSend(APIView):
     serializer_class = TaskMessageSerializer
-    permission_classes =(IsAuthenticated,)
-    def post(self,request,pk):
-        serializer = self.serializer_class(TaskMessage,context={'request': request})
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, pk):
         associated_task = get_object_or_404(Task, pk=pk)
-        if request.user in associated_task.assigned_users.all():
+        
+        if (request.user in associated_task.assigned_users.all()) or (request.user == associated_task.owner):
+            serializer = self.serializer_class(data=request.data, context={'request': request})
+            
             if serializer.is_valid():
-                serializer.save(sender=request.user,associated_task=associated_task,)
-                return Response(serializer.data)
+                task_message = serializer.save(sender=request.user, associated_task=associated_task)
+                associated_task.task_messages.add(task_message)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({'error': 'You do not have permission to add a comment to this task.'}, status=status.HTTP_403_FORBIDDEN)
+
+        
+class TaskMessageView(APIView):
+    serializer_class = TaskMessageSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, pk):
+        associated_task = get_object_or_404(Task, pk=pk)
+        task_messages = TaskMessage.objects.filter(associated_task=associated_task)
+        task_serializer = self.serializer_class(task_messages, many=True, context={'request': request})
+        return Response(task_serializer.data)
