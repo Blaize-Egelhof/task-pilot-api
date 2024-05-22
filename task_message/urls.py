@@ -6,4 +6,6 @@ urlpatterns = [
          name='task-message-send'),
     path('task-messages-view/<int:pk>', views.TaskMessageView.as_view(),
          name='task-message-view'),
+     path('task-messages-delete/<int:pk>', views.TaskMessageDelete.as_view(),
+         name='task-message-view'),
 ]

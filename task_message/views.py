@@ -51,3 +51,22 @@ class TaskMessageView(APIView):
         task_serializer = self.serializer_class(task_messages, many=True,
                                                 context={'request': request})
         return Response(task_serializer.data)
+
+
+class TaskMessageDelete(APIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = TaskMessageSerializer
+
+    def post(self, request, pk):
+        try:
+            message_to_be_deleted = TaskMessage.objects.get(pk=pk)
+        except TaskMessage.DoesNotExist:
+            return Response({'error': 'Message not found'},
+                             status=status.HTTP_404_NOT_FOUND)
+
+        if message_to_be_deleted.associated_task.owner == request.user:
+            message_to_be_deleted.delete()
+            return Response({'success': 'Message has been deleted'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'You do not have permission to delete this comment'},
+                             status=status.HTTP_403_FORBIDDEN)
