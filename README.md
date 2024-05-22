@@ -1,112 +1,273 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Task Pilot - API
 
-Welcome Blaize Egelhof,
+#### DEPLOYED BACKEND API RENDER [LINK]() 
+#### DEPLOYED FRONTEND RENDER [LINK - LIVE SITE]()
+#### DEPLOYED FRONTEND [REPOSITORY]()
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Table of Contents
++ [User Stories](#user-stories "User Stories")
++ [Database](#database "Database")
++ [Testing](#testing "Testing")
+  + [Validator Testing](#validator-testing "Validator Testing")
+  + [Unfixed Bugs](#unfixed-bugs "Unfixed Bugs")
++ [Technologies Used](#technologies-used "Technologies Used")
+  + [Main Languages Used](#main-languages-used "Main Languages Used")
+  + [Frameworks, Libraries & Programs Used](#frameworks-libraries-programs-used "Frameworks, Libraries & Programs Used")
++ [Deployment](#deployment "Deployment")
++ [Credits](#credits "Credits")
+  + [Content](#content "Content")
+  + [Media](#media "Media")
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **April 26, 2024**
+## User Stories:
+All User Stories have been documented in their own file, the link for which can be found [HERE](https://github.com/users/Blaize-Egelhof/task-pilot-api/static/userstories.md).
 
-## Gitpod Reminders
+I have included links to the [GitHub Issues](https://github.com/Blaize-Egelhof/task-pilot-api/issues) for this project, as well as the [KANBAN board](https://github.com/users/Blaize-Egelhof/projects/3).
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Database:
+![SQL Database model](/static/images/app_schema_all_models.png)
 
-`python3 -m http.server`
+## Testing:
 
-A blue button should appear to click: _Make Public_,
+### Manual Testing:
 
-Another blue button should appear to click: _Open Browser_.
+| **ID** | **CATEGORY**               | **TEST**                       | **ACTION**                        | **EXPECTATION**                                                  | **RESULT** |
+|--------|----------------------------|--------------------------------|-----------------------------------|------------------------------------------------------------------|------------|
+| T1     | **Tasks**                  | Create                         | Create Task Object                | Signed In Users can create their own tasks                       | ✅         |
+| T2     | **Tasks**                  | Edit                           | Edit Already Created Task Objects | Signed In users can modify their created Tasks                   | ✅         |
+| T3     | **Tasks**                  | Comment                        | Add comments to Task              | Signed in Users and owners can comment on task objects           | ✅         |
+| T4     | **Tasks**                  | Delete                         | Able to delete Tasks Objects      | Only Owners can delete their Task objects                        | ✅         |
+| I1     | **Inbox Creation**         | Create                         | Create Inbox Objects              | New User instances create Inbox instance tied to User            | ✅         |
+| P2     | **Profile Creation**       | Create                         | Create Profile Objects            | New User instances create profile instances tied to the User     | ✅         |
+| P1     | **Profile Modifications**  | Edit                           | Edit Profile Objects              | Profile Owners can modify their own Profile information          | ✅         |
+| T5     | **Task Comments**          | Create                         | Create Task Comment Objects       | Task Owners and Participants can comment on a Task               | ✅         |
+| T6     | **Task Comments Modifications** | Edit                      | Edit Task Comment Object          | Task Comments can be edited by contributors                      | ✅         |
+| T6     | **Task Comments Deletion**       | Delete                    | Delete Task Comment Object        | Task Comments can be deleted by task owners                      | ✅         |
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
 
-A blue button should appear to click: _Make Public_,
+- Profile and Inbox instances are deleted upon User Instance being deleted. 
 
-Another blue button should appear to click: _Open Browser_.
+### Validator Testing 
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+| **ID** | **CATEGORY**       | **TEST**          | **ACTION**                               | **EXPECTATION**                                                     | **RESULT** |
+|--------|--------------------|-------------------|------------------------------------------|---------------------------------------------------------------------|------------|
+| T1     | **Task**        | pass pep8 validator            | Run all related files through the validator                     |  ✅ 
+| TM1     | **Task Messages**        | pass pep8 validator            | Run all related files through the validator                     |  ✅ 
+| P1     | **Profiles**        | pass pep8 validator            | Run all related files through the validator       
+| I1     | **Inbox**        | pass pep8 validator            | Run all related files through the validator                   |  ✅ 
+| UM1     | **User Messages**        | pass pep8 validator            | Run all related files through the validator                   |  ✅ 
+| TP1     | **Task Pilot**        | pass pep8 validator            | Run all related files through the validator                   |  ✅ 
 
-To log into the Heroku toolbelt CLI:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Unfixed Bugs
+- None so far.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+## Technologies Used:
+### Main Languages Used:
+- Python
 
-------
+### Frameworks, Libraries & Programs Used:
+- Django
+- Django RestFramework
+- Cloudinary
+- Heroku
+- Pillow
+- Django Rest Auth
+- PostgreSQL
+- Cors Headers
 
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
+## Deployment:
+### Project creation:
+1. Create the GitHub repository.
+2. Create the project app on [Heroku](heroku.com).
+3. Add the Postgres package to the Heroku app via the Resources tab.
+4. Once the GitHub repository was launched on GitPod, installed the following packages using the `pip install` command:
 ```
-pkill uptime.sh
-rm .vscode/uptime.sh
+'django<4'
+dj3-cloudinary-storage
+Pillow
+djangorestframework
+django-filter
+dj-rest-auth
+'dj-rest-auth[with_social]'
+djangorestframework-simplejwt
+dj_database_url psycopg2
+gunicorn
+django-cors-headers
+```
+5. Created the Django project with the following command:
+```
+django-admin startproject project_name .
+```
+6. Navigated back to [Heroku](heroku.com), and under the Settings tab, added the following configvars:
+ - Key: SECRET_KEY | Value: hidden
+ - Key: CLOUDINARY_URL | Value: cloudinary://hidden
+ - Key: DISABLE_COLLECTSTATIC | Value: 1
+ - Key: ALLOWED_HOST | Value: api-app-name.herokuapp.com
+7. Add two additional configvars once the ReactApp has been created:
+ - Key: CLIENT_ORIGIN | Value: https://react-app-name.herokuapp.com
+ - Key: CLIENT_ORIGIN_DEV | Value: https://gitpod-browser-link.ws-eu54.gitpod.io
+  - Check that the trailing slash `\` at the end of both links has been removed.
+  - Gitpod occasionally updates the browser preview link. Should this occur, the CLIENT_ORIGIN_DEV value shall need to be updated.
+
+8. Created the env.py file, and added the following variables. The value for DATABASE_URL was obtained from the Heroku configvars in the previous step:
+```
+import os
+
+os.environ['CLOUDINARY_URL'] = 'cloudinary://hidden'
+os.environ['DEV'] = '1'
+os.environ['SECRET_KEY'] = 'hidden'
+os.environ['DATABASE_URL'] = 'postgres://hidden'
+```
+### In settings.py: 
+9. Add the following to INSTALLED_APPS to support the newly installed packages:
+```
+'cloudinary_storage',
+'django.contrib.staticfiles',
+'cloudinary',
+'rest_framework',
+'django_filters',
+'rest_framework.authtoken',
+'dj_rest_auth',
+'django.contrib.sites',
+'allauth',
+'allauth.account',
+'allauth.socialaccount',
+'dj_rest_auth.registration',
+'corsheaders',
+```
+10. Import the database, the regular expression module & the env.py
+```
+import dj_database_url
+import re
+import os
+if os.path.exists('env.py')
+    import env
 ```
 
-**Anything more?**
+11. Below the import statements, add the following variable for Cloudinary:
+```
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.environ.ger('CLOUDINARY_URL')
+}
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinartStorage'
+```
+- Below INSTALLED_APPS, set site ID:
+```
+SITE_ID = 1
+```
+12. Below BASE_DIR, create the REST_FRAMEWORK, and include page pagination to improve app loading times, pagination count, and date/time format:
+```
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )],
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DATETIME_FORMAT': '%d %b %Y',
+}
+```
+13. Set the default renderer to JSON:
+```
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+```
+14. Beneath that, added the following:
+```
+REST_USE_JWT = True
+JWT_AUTH_SECURE = True
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+JWT_AUTH_SAMESITE = 'None'
+```
+15. Then added:
+```
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'project_name.serializers.CurrentUserSerializer'
+}
+```
+16. Updated DEBUG variable to:
+```
+DEBUG = 'DEV' in os.environ
+```
+17. Updated the DATABASES variable to:
+```
+DATABASES = {
+    'default': ({
+       'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    } if 'DEV' in os.environ else dj_database_url.parse(
+        os.environ.get('DATABASE_URL')
+    )
+    )
+}
+```
+18. Added the Heroku app to the ALLOWED_HOSTS variable:
+```
+os.environ.get('ALLOWED_HOST'),
+'localhost',
+```
+19. Below ALLOWED_HOST, added the CORS_ALLOWED variable as shown in [DRF-API walkthrough](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DRF+2021_T1/courseware/a6250c9e9b284dbf99e53ac8e8b68d3e/0c9a4768eea44c38b06d6474ad21cf75/?child=first):
+```
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
 
----
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
+```
+20. Also added to the top of MIDDLEWARE:
+```
+'corsheaders.middleware.CorsMiddleware',
+```
+- During a deployment issue, it was suggested by a fellow student, Johan, to add the following lines of code below CORS_ALLOW_CREDENTIALS:
+```
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = list(default_headers)
+CORS_ALLOW_METHODS = list(default_methods)
+CSRF_TRUSTED_ORIGINS = [os.environ.get(
+    'CLIENT_ORIGIN_DEV', 'CLIENT_ORIGIN',
+)]
+```
+- In addition, Johan also suggested to add the following import statement at the top of the settings.py file:
+```
+from corsheaders.defaults import default_headers, default_methods
+```
 
-Happy coding!
+### Final requirements:
+21. Created a Procfile, & added the following two lines:
+```
+release: python manage.py makemigrations && python manage.py migrate
+web: gunicorn project_name.wsgi
+```
+22. Migrated the database:
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+23. Freeze requirements:
+```
+pip3 freeze --local > requirements.txt
+```
+24. Added, committed & pushed the changes to GitHub
+25. Navigated back to heroku, and under the ‘Deploy’ tab, connect the GitHub repository.
+26. Deployed the branch.
+
+## CREDITS:
+
+### Content:
+- The creation of this API database was provided through the step by step guide of the C.I. DRF-API walkthrough project.
+- All classes & functions have been credited.
+
+### Media:
+- All Images have been used from CleanPNG [CleanPNG](https://www.cleanpng.com/)

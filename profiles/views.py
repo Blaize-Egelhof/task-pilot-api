@@ -6,26 +6,32 @@ from django.http import Http404
 from rest_framework import status
 from taskpilot.permissions import IsOwnerOrReadOnly
 
+
 class ProfileList(APIView):
     def get(self, request):
         profiles = Profile.objects.all()
-        serializer = ProfileSerializer(profiles, many= True ,context= {'request' : request})
+        serializer = ProfileSerializer(profiles, many=True,
+                                       context={'request': request})
         return Response(serializer.data)
 
+
 class ProfileDetail(APIView):
-    permission_classes =[IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ProfileSerializer
+
     def get_object(self, pk):
         try:
-            profile=Profile.objects.get(pk=pk)
-            self.check_object_permissions (self.request, profile)
+            profile = Profile.objects.get(pk=pk)
+            self.check_object_permissions(self.request, profile)
             return profile
         except Profile.DoesNotExist:
             raise Http404
-    
-    def put (self, request, pk):
-        profile =self.get_object(pk)
-        serializer=ProfileSerializer(profile, data=request.data ,context= {'request' : request})
+
+    def put(self, request, pk):
+        profile = self.get_object(pk)
+        serializer = ProfileSerializer(profile, data=request.data,
+                                       context={'request': request})
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -33,8 +39,5 @@ class ProfileDetail(APIView):
 
     def get(self, request, pk):
         profile = self.get_object(pk)
-        serializer=ProfileSerializer(profile ,context= {'request' : request})
+        serializer = ProfileSerializer(profile, context={'request': request})
         return Response(serializer.data)
-
-
-# Create your views here.

@@ -9,15 +9,17 @@ from inbox.serializers import InboxSerializer
 from user_messages.models import Message
 from user_messages.serializers import MessageSerializer
 
+
 class InboxView(APIView):
-    permission_classes =[IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = InboxSerializer
-    
-    def get(self,request):
+
+    def get(self, request):
         inbox = get_object_or_404(Inbox, user=request.user)
-        serializer = InboxSerializer(inbox,context= {'request' : request})
+        serializer = InboxSerializer(inbox, context={'request': request})
+
         return Response(serializer.data)
-    
+
     def put(self, request, pk):
         permission_classes = [IsAuthenticated]
         message_to_update = get_object_or_404(Message, pk=pk)
@@ -30,16 +32,12 @@ class InboxView(APIView):
         elif 'declined' in data:
             message_to_update.declined = True
         else:
-            return Response({"detail": "Invalid request"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"detail": "Invalid request"},
+                            status=status.HTTP_400_BAD_REQUEST)
 
         message_to_update.read_status = True
         message_to_update.save()
-        
-        serializer = MessageSerializer(message_to_update, context={'request': request})
+
+        serializer = MessageSerializer(message_to_update,
+                                       context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
-        
-        
-            
-
-        
-
