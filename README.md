@@ -48,14 +48,14 @@ I have included links to the [GitHub Issues](https://github.com/Blaize-Egelhof/t
 
 ### Validator Testing 
 
-| **ID** | **CATEGORY**       | **TEST**          | **ACTION**                               | **EXPECTATION**                                                     | **RESULT** |
-|--------|--------------------|-------------------|------------------------------------------|---------------------------------------------------------------------|------------|
-| T1     | **Task**        | pass pep8 validator            | Run all related files through the validator                     |  ✅ 
-| TM1     | **Task Messages**        | pass pep8 validator            | Run all related files through the validator                     |  ✅ 
-| P1     | **Profiles**        | pass pep8 validator            | Run all related files through the validator       
-| I1     | **Inbox**        | pass pep8 validator            | Run all related files through the validator                   |  ✅ 
-| UM1     | **User Messages**        | pass pep8 validator            | Run all related files through the validator                   |  ✅ 
-| TP1     | **Task Pilot**        | pass pep8 validator            | Run all related files through the validator                   |  ✅ 
+| **ID** | **CATEGORY**    | **TEST**              | **ACTION**                                  | **RESULT**                            |
+|--------|-----------------|-----------------------|---------------------------------------------|--------------------------------------------|
+| T1     | **Task**        | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
+| TM1    | **Task Messages** | pass pep8 validator | Run all related files through the validator |  ✅                                         |
+| P1     | **Profiles**    | pass pep8 validator  | Run all related files through the validator |      ✅                 ✅                     |
+| I1     | **Inbox**       | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
+| UM1    | **User Messages** | pass pep8 validator| Run all related files through the validator |  ✅                                         |
+| TP1    | **Task Pilot**  | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
 
 
 ### Unfixed Bugs
@@ -270,4 +270,4 @@ pip3 freeze --local > requirements.txt
 - All classes & functions have been credited.
 
 ### Media:
-- All Images have been used from CleanPNG [CleanPNG](https://www.cleanpng.com/)
+- All Images have been used from CleanPNG for this back-end repository. [CleanPNG](https://www.cleanpng.com/)
