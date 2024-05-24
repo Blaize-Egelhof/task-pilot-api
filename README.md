@@ -44,7 +44,7 @@ I have included links to the [GitHub Issues](https://github.com/Blaize-Egelhof/t
 | T6     | **Task Comments Deletion**       | Delete                    | Delete Task Comment Object        | Task Comments can be deleted by task owners                      | ✅         |
 
 
-- Profile and Inbox instances are deleted upon User Instance being deleted. 
+- Profile and Inbox model instances are created upon User Instance creation. 
 
 ### Validator Testing 
 
@@ -52,7 +52,7 @@ I have included links to the [GitHub Issues](https://github.com/Blaize-Egelhof/t
 |--------|-----------------|-----------------------|---------------------------------------------|--------------------------------------------|
 | T1     | **Task**        | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
 | TM1    | **Task Messages** | pass pep8 validator | Run all related files through the validator |  ✅                                         |
-| P1     | **Profiles**    | pass pep8 validator  | Run all related files through the validator |      ✅                 ✅                     |
+| P1     | **Profiles**    | pass pep8 validator  | Run all related files through the validator |               ✅                     |
 | I1     | **Inbox**       | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
 | UM1    | **User Messages** | pass pep8 validator| Run all related files through the validator |  ✅                                         |
 | TP1    | **Task Pilot**  | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
