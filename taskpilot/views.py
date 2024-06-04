@@ -1,8 +1,9 @@
-from rest_framework.views import APIView
-from rest_framework import status
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-class DefaultGreeting(APIView):
 
-    def get(self,request):
-        return Response({'Welcome! To My Task Pilot API'})
+@api_view()
+def root_route(request):
+    return Response({
+        "message": "Welcome to my TaskPilot API!"
+    })
