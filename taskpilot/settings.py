@@ -53,7 +53,6 @@ INSTALLED_APPS = [
 SITE_ID= 1
 
 MIDDLEWARE = [
-    'allauth.account.middleware.AccountMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
