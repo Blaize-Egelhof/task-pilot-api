@@ -68,6 +68,8 @@ AUTHENTICATION_BACKENDS = (
    "allauth.account.auth_backends.AuthenticationBackend"
 )
 
+ACCOUNT_EMAIL_REQUIRED=False
+
 ROOT_URLCONF = 'taskpilot.urls'
 
 TEMPLATES = [
