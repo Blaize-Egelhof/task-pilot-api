@@ -2,11 +2,12 @@ from rest_framework import serializers
 from .models import Task
 from task_message.serializers import TaskMessageSerializer
 
-
 class TaskSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     task_messages = TaskMessageSerializer(many=True, read_only=True)
+    assigned_users = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all(), required=False, allow_null=True)
+    state_changed_by = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False, allow_null=True)
 
     class Meta:
         model = Task
