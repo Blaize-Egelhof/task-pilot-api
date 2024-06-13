@@ -34,7 +34,7 @@ class Task(models.Model):
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES,
                                 default='Other')
     state = models.CharField(max_length=20, choices=STATE_CHOICES,
-                             default='Open')
+                             default='In Progress')
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE,
                               related_name='owned_tasks')
