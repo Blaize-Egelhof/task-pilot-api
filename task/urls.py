@@ -12,4 +12,6 @@ urlpatterns = [
          name='delete-task'),
     path('update-task/<int:pk>', views.TaskUpdate.as_view(),
          name='update-task'),
+     path('users/<int:pk>', views.GrabAllUser.as_view(),
+         name='all-users')
 ]

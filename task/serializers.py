@@ -29,3 +29,8 @@ class TaskSerializer(serializers.ModelSerializer):
             instance.assigned_users.set(assigned_users)
 
         return instance
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username']

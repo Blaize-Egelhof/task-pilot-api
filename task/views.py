@@ -10,6 +10,7 @@ from django.http import Http404
 from rest_framework import status
 from taskpilot.permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
+from .serializers import UserSerializer
 
 
 class RelatedTasks(APIView):
@@ -97,3 +98,22 @@ class TaskUpdate(APIView):
             return Response({'detail':
                             'You do not have permission to update this task.'},
                             status=status.HTTP_403_FORBIDDEN)
+
+class GrabAllUser(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get(self, request, pk):
+        new_members_task = get_object_or_404(Task, pk=pk)
+        users = User.objects.all()
+        user_requesting = request.user
+
+        if user_requesting == new_members_task.owner:
+            updated_list = users.exclude(id=user_requesting.id)
+            serializer = self.serializer_class(updated_list, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response({'detail': 'You do not have permission to update this task.'},
+                            status=status.HTTP_403_FORBIDDEN)
+
+
