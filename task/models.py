@@ -39,7 +39,8 @@ class Task(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE,
                               related_name='owned_tasks')
     assigned_users = models.ManyToManyField(User,
-                                            related_name='assigned_tasks')
+                                            related_name='assigned_tasks',
+                                            blank=True)
     state_changed_by = models.ForeignKey(User, on_delete=models.SET_NULL,
                                          null=True, blank=True,
                                          related_name='state_changed_tasks')

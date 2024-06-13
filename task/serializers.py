@@ -12,7 +12,7 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at', 'due_date', 'priority', 'category',
             'state', 'assigned_users', 'state_changed_by', 'task_visability',
-            'title', 'is_owner', 'task_messages'
+            'title', 'is_owner', 'task_messages','description'
         ]
 
     def get_is_owner(self, obj):
