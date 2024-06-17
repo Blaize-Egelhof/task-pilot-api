@@ -10,7 +10,7 @@ class Profile(models.Model):
     bios = models.TextField(blank=True, default='Create A Bios!')
     image = models.ImageField(
         upload_to='images/',
-        default='/v1715765148/taskpilot/ffomfbsj8j1wjaiqi5r5.jpg>', blank=True
+        default='/v1715765148/taskpilot/ffomfbsj8j1wjaiqi5r5.jpg', blank=True
     )
 
     class Meta:
