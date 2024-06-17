@@ -10,7 +10,7 @@ class Profile(models.Model):
     bios = models.TextField(blank=True, default='Create A Bios!')
     image = models.ImageField(
         upload_to='images/',
-        default='https://res.cloudinary.com/drdelhvyt/image/upload/v1714060667/default_profile_qsg0aq.jpg', blank=True
+        default='../default_profile_qsg0aq', blank=True
     )
 
     class Meta:
