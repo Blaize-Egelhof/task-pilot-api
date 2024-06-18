@@ -10,7 +10,7 @@ def root_route(request):
 
 @api_view(['POST'])
 def logout_route(request):
-    response = Response()
+    response = Response({'message': 'Logged out successfully! Cookies cleared.'}, status=200)
     response.set_cookie(
         key=JWT_AUTH_COOKIE,
         value='',
@@ -29,4 +29,4 @@ def logout_route(request):
         samesite=JWT_AUTH_SAMESITE,
         secure=JWT_AUTH_SECURE,
     )
-    return response({'message':'logged out succesfully! , cookies cleared etc.'})
+    return response
