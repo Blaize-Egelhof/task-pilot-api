@@ -5,12 +5,22 @@ from profiles.models import Profile
 class TaskMessageSerializer(serializers.ModelSerializer):
     sender_profile_image_url = serializers.SerializerMethodField()
     is_owner =serializers.SerializerMethodField()
+    sender_username = serializers.SerializerMethodField()
 
     class Meta:
         model = TaskMessage
         fields = [
-            'sender', 'associated_task', 'title', 'context', 'timestamp', 'sender_profile_image_url','is_owner'
+            'sender', 'associated_task', 'title', 'context', 'timestamp', 'sender_profile_image_url','is_owner','sender_username'
         ]
+
+    def get_sender_username(self, obj):
+        sender = obj.sender
+        try:
+            profile = Profile.objects.get(owner=sender)
+            return profile.owner.username  
+        except Profile.DoesNotExist:
+            return 'Unknown'  
+
 
     def get_sender_profile_image_url(self, obj):
         sender = obj.sender
