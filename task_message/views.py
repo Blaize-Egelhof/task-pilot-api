@@ -19,7 +19,7 @@ class TaskMessageSend(APIView):
         associated_task = get_object_or_404(Task, pk=pk)
 
         if (request.user in associated_task.assigned_users.all()) or (request.user == associated_task.owner):
-            serializer = self.serializer_class(data=request.data)
+            serializer = self.serializer_class(data=request.data, context={'request': request})
             if serializer.is_valid():
                 task_message = serializer.save(sender=request.user, associated_task=associated_task)
                 associated_task.task_messages.add(task_message)
