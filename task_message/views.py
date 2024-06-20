@@ -61,7 +61,7 @@ class TaskMessageDelete(APIView):
             return Response({'error': 'Message not found'},
                              status=status.HTTP_404_NOT_FOUND)
 
-        if message_to_be_deleted.associated_task.owner == request.user:
+        if (message_to_be_deleted.associated_task.owner == request.user) or (message_to_be_deleted.sender ==request.user):
             message_to_be_deleted.delete()
             return Response({'success': 'Message has been deleted'}, status=status.HTTP_200_OK)
         else:

@@ -10,7 +10,7 @@ class TaskMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = TaskMessage
         fields = [
-            'sender', 'associated_task', 'title', 'context', 'timestamp', 'sender_profile_image_url','is_owner','sender_username'
+            'id','sender', 'associated_task', 'title', 'context', 'timestamp', 'sender_profile_image_url','is_owner','sender_username'
         ]
 
     def get_sender_username(self, obj):
