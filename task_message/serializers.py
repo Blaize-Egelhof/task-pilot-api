@@ -1,18 +1,29 @@
 from rest_framework import serializers
 from .models import TaskMessage
+from profiles.models import Profile
 
 class TaskMessageSerializer(serializers.ModelSerializer):
-    # sender_profile = serializers.CharField(source='sender.profile.picture_url', read_only=True)
-    is_owner = serializers.SerializerMethodField()
+    sender_profile_image_url = serializers.SerializerMethodField()
+    is_owner =serializers.SerializerMethodField()
 
     class Meta:
         model = TaskMessage
         fields = [
-            'sender', 'associated_task', 'title', 'context', 'timestamp', 'is_owner',
+            'sender', 'associated_task', 'title', 'context', 'timestamp', 'sender_profile_image_url','is_owner'
         ]
+
+    def get_sender_profile_image_url(self, obj):
+        sender = obj.sender
+        try:
+            profile = sender.profile
+            if profile and profile.image:
+                return profile.image.url
+            return 'Error getting profile URL'
+        except Profile.DoesNotExist:
+            return 'Error getting profile URL'  
 
     def get_is_owner(self, obj):
         request = self.context.get('request')
         if request and request.user:
-            return request.user == obj.sender or request.user == obj.associated_task.owner
+            return request.user == obj.associated_task.owner
         return False
