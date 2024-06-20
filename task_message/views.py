@@ -18,16 +18,22 @@ class TaskMessageSend(APIView):
     def post(self, request, pk):
         associated_task = get_object_or_404(Task, pk=pk)
 
-        if (request.user in associated_task.assigned_users.all()) or (request.user == associated_task.owner):
-            serializer = self.serializer_class(data=request.data, context={'request': request})
-            if serializer.is_valid():
-                task_message = serializer.save(sender=request.user, associated_task=associated_task)
-                associated_task.task_messages.add(task_message)
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        sender = request.user
+
+        data = {
+            'sender': sender.id, 
+            'associated_task': associated_task.id, 
+            'context': request.data.get('context', ''), 
+        }
+
+        serializer = self.serializer_class(data=data, context={'request': request})
+
+        if serializer.is_valid():
+            task_message = serializer.save()
+            associated_task.task_messages.add(task_message)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response({'error': 'You do not have permission to add a comment to this task.'}, status=status.HTTP_403_FORBIDDEN)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TaskMessageView(APIView):
