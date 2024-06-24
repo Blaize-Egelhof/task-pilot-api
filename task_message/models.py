@@ -6,6 +6,6 @@ class TaskMessage(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE)
     associated_task = models.ForeignKey(Task, on_delete=models.CASCADE)
     title = models.CharField(max_length=20, blank=True)
-    context = models.CharField(max_length=40, blank=True)
+    context = models.CharField(max_length=200, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     
