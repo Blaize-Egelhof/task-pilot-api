@@ -7,15 +7,26 @@ from rest_framework import status
 from taskpilot.permissions import IsOwnerOrReadOnly
 
 
-class ProfileList(APIView):
-    def get(self, request):
-        profiles = Profile.objects.all()
-        serializer = ProfileSerializer(profiles, many=True,
-                                       context={'request': request})
-        return Response(serializer.data)
-
-
 class ProfileDetail(APIView):
+    """
+    API endpoint for retrieving, updating,
+    or deleting a specific profile instance.
+
+    Attributes:
+    - permission_classes: Controls access permissions
+      using IsOwnerOrReadOnly to allow owners full access
+      and others read-only access.
+    - serializer_class: Serializer used for converting profile
+      instances to and from JSON format.
+
+    Methods:
+    - get_object: Retrieves a profile instance based on the
+      provided primary key (pk) and checks permissions.
+    - get: Retrieves and serializes details of a specific
+      profile instance.
+    - put: Updates a specific profile instance with new
+      data from the request payload.
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ProfileSerializer
 
@@ -29,9 +40,7 @@ class ProfileDetail(APIView):
 
     def put(self, request, pk):
         profile = self.get_object(pk)
-        serializer = ProfileSerializer(profile, data=request.data,
-                                       context={'request': request},partial=True)
-
+        serializer = ProfileSerializer(profile, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

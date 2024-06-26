@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import Profile
 
-admin.site.register(Profile)
+"""
+Registering the profile model on Django admin panel for testing
 
-# Register your models here.
+"""
+
+admin.site.register(Profile)
