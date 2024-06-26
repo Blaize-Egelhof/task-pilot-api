@@ -27,7 +27,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io', 'task-pilot-api-323c9bc2bc87.herokuapp.com']
+ALLOWED_HOSTS = ['8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
+                 'task-pilot-api-323c9bc2bc87.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -53,7 +54,7 @@ INSTALLED_APPS = [
     'task_message',
 ]
 
-SITE_ID= 1
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,7 +72,7 @@ AUTHENTICATION_BACKENDS = (
    "allauth.account.auth_backends.AuthenticationBackend"
 )
 
-ACCOUNT_EMAIL_REQUIRED=False
+ACCOUNT_EMAIL_REQUIRED = False
 
 ROOT_URLCONF = 'taskpilot.urls'
 
