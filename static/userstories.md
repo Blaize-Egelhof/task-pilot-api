@@ -1,50 +1,53 @@
 # USER STORIES:
 
-### Epic 1 : Authentications
-1. As a new user, I want to be able to create an account using my username and password so that I can access personalized task management features.
+### Epic 1: Authentications
+1. As a new user, I want to create an account using my username and password to access personalized task management features.
 
-2. As a user, I want to be able to log in to my account, so that I can access my personal and assigned tasks.
+2. As a user, I want to log in to my account to access my personal and assigned tasks.
 
-3. As a user, I want to be able to log out of my account, so that I can ensure my account is secure when not in use.
+3. As a user, I want to log out of my account to ensure its security when not in use.
 
-### Epic 2 : Navigation	
-4. As a user I would like to view the nav bar on every page so that I can easily navigate through the site.
+4. As a user, I would like to stay logged in for extended periods for convenience.
 
-5. As a user I would like to have infinite scroll so that I can view all Task Messages convienitly.
+### Epic 2: Navigation
+5. As a user, I want a consistent navigation bar on every page for easy site navigation.
 
-### Epic 3 : Task
-6. As a user, I want to create a task so that I can tackle challenges efficiently.
+6. As a user, I want to organize tasks by status or ownership for better organization.
 
-7. As a user I would like to view all my related Tasks so that I can keep track of my responsibilities.
+### Epic 3: Task
+7. As a user, I want to create tasks efficiently to tackle challenges effectively.
 
-8. As a user I would like to view task details so that I can obtain more information about a task.
+8. As a user, I want to view all tasks related to me to keep track of my responsibilities.
 
-11. As a user I would like to comment on a Task so that I can contribute to the resolution of the Task.
+9. As a user, I want detailed task information to understand tasks better.
 
-12. As a user I would like to change my owned Task's status so that I can notify all task memebers that a resolution was found. 
+10. As a user, I want to comment on tasks to contribute to their resolution.
 
-13. As a user I would like to delete my owned Task's comments so that I can filter incomming responses.
+11. As a user, I want to change my task's status to notify all members of progress.
 
-14. As a user, I want to be able to delete a task that I own, so that I can remove tasks that are no longer relevant or necessary.
+12. As a user, I want to delete my task's comments to manage incoming responses.
 
-15. As a user I would like to invite other users to join my owned Task so that I can obtain further members to contribute to the issue.
+13. As a user, I want to delete a task I own if it is no longer necessary.
 
-16. As a user, I want to have the option to leave a task or group, so that I can manage my workload and commitments according to my current priorities.
+14. As a user, I want to add other users to my tasks to collaborate on solutions.
 
-17. As a user, I want to attach files to a task so that all related information is accessible in one place.
+15. As a user, I want to leave tasks or groups to manage my workload and commitments.
 
-18. As a user, I want to set a task as overdue so that I can prioritize tasks that require immediate attention.
+16. As a user, I want to mark tasks as overdue to prioritize urgent tasks.
 
-### Epic 4 : Notifications
-19. As a user I would like to view my inbox so that I can view my Notification and Invitations in one place.
+### Epic 4: Notifications
+17. As a user, I want to receive notifications for completed processes or errors.
 
-### Epic 5 : Profiles
-20. As a user , I can view my own or others profiles , in order to see the publicly joined tasks and created tasks of the user
+### Epic 5: Profiles
+18. As a user, I want to view my own or others' profiles to see publicly joined and created tasks.
 
-21. As a user I would like to see stats via a user profile so that I can see how many tasks created/joined/contributions they have
+19. As a user, I want to see stats via user profiles to understand task creation, participation, and contributions.
 
-22. As a user I would like to update my username/password so that I can make alterations as needed.
+20. As a user, I want to set my avatar to personalize my profile.
 
-23. As a user I would like to set my avatar so that I can assign a photo to my profile
+21. As a user, I want to update my bio to share information about myself.
 
-24. As a user I would like to view other users avatars so that I can quickly recognise another user
+22. As a user, I want to view other users' avatars for quick recognition.
+
+### Epic 6: Viewport Viewing
+23. As a user, I want to access and use Task Pilot seamlessly on any device, including mobile, tablet, laptop, and desktop screens.
