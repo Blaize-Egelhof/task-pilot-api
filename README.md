@@ -1,6 +1,6 @@
 # Task Pilot - API
 
-#### DEPLOYED BACKEND API RENDER [LINK]() 
+#### DEPLOYED BACKEND API RENDER [LINK](https://task-pilot-api-323c9bc2bc87.herokuapp.com/) 
 #### DEPLOYED FRONTEND RENDER [LINK - LIVE SITE]()
 #### DEPLOYED FRONTEND [REPOSITORY]()
 
@@ -24,37 +24,51 @@ All User Stories have been documented in their own file, the link for which can 
 I have included links to the [GitHub Issues](https://github.com/Blaize-Egelhof/task-pilot-api/issues) for this project, as well as the [KANBAN board](https://github.com/users/Blaize-Egelhof/projects/3).
 
 ## Database:
+
+- Note: This database model represents the final version of the application. Due to time constraints, I haven't implemented the following apps:
+  - Inbox app
+  - User Messages app
+
+These apps were designed to manage a large audience, with the Inbox app acting like a regular inbox for users to receive notifications and task invites, enhancing user control and organization. The User Messages app works in conjunction with the Inbox app to handle invites and notifications. These features will be implemented in a future version of the software.
+
+
 ![SQL Database model](/static/images/app_schema_all_models.png)
 
 ## Testing:
 
 ### Manual Testing:
 
-| **ID** | **CATEGORY**               | **TEST**                       | **ACTION**                        | **EXPECTATION**                                                  | **RESULT** |
-|--------|----------------------------|--------------------------------|-----------------------------------|------------------------------------------------------------------|------------|
-| T1     | **Tasks**                  | Create                         | Create Task Object                | Signed In Users can create their own tasks                       | ✅         |
-| T2     | **Tasks**                  | Edit                           | Edit Already Created Task Objects | Signed In users can modify their created Tasks                   | ✅         |
-| T3     | **Tasks**                  | Comment                        | Add comments to Task              | Signed in Users and owners can comment on task objects           | ✅         |
-| T4     | **Tasks**                  | Delete                         | Able to delete Tasks Objects      | Only Owners can delete their Task objects                        | ✅         |
-| I1     | **Inbox Creation**         | Create                         | Create Inbox Objects              | New User instances create Inbox instance tied to User            | ✅         |
-| P2     | **Profile Creation**       | Create                         | Create Profile Objects            | New User instances create profile instances tied to the User     | ✅         |
-| P1     | **Profile Modifications**  | Edit                           | Edit Profile Objects              | Profile Owners can modify their own Profile information          | ✅         |
-| T5     | **Task Comments**          | Create                         | Create Task Comment Objects       | Task Owners and Participants can comment on a Task               | ✅         |
-| T6     | **Task Comments Modifications** | Edit                      | Edit Task Comment Object          | Task Comments can be edited by contributors                      | ✅         |
-| T6     | **Task Comments Deletion**       | Delete                    | Delete Task Comment Object        | Task Comments can be deleted by task owners                      | ✅         |
+| **ID** | **CATEGORY**         | **TEST**                  | **ACTION**                           | **EXPECTATION**                                                 | **RESULT** |
+|--------|----------------------|---------------------------|--------------------------------------|-----------------------------------------------------------------|------------|
+| T1     | **Tasks**            | Create                    | Create Task Object                   | Signed-in Users can create tasks                                 | ✅         |
+| T2     | **Tasks**            | Edit                      | Edit Created Task                   | Signed-in Users can modify their tasks                           | ✅         |
+| T3     | **Tasks**            | Add Member                | Add User as Task Member              | Task Owners can add members to their tasks                       | ✅         |
+| T4     | **Tasks**            | Delete                    | Delete Task Object                   | Only Owners can delete their tasks                               | ✅         |
+| T5     | **Tasks**            | Comment                   | Add Comment to Task                  | Users can comment on tasks                                       | ✅         |
+| T6     | **Tasks**            | Comment                   | Delete Own Comment                   | Users can delete their own comments on tasks                     | ✅         |
+| T7     | **Tasks**            | Comment                   | View Commentator Profile            | Users can view profiles of comment contributors                  | ✅         |
+| T8     | **Tasks**            | Organize                  | Filter Tasks                        | Users can filter tasks by ownership and status                   | ✅         |
+| T9     | **Tasks**            | View Details              | View Task Details                   | Owners or members can view task details and dialogue             | ✅         |
+| P1     | **Profiles**         | Edit                      | Edit Profile                         | Profile owners can edit their profile details                    | ✅         |
+| P2     | **Profiles**         | Create                    | Create Profile Object                | New Users create profiles linked to their accounts               | ✅         |
+| P3     | **Account Management** | Create Account          | Create User Account                  | New visitors can create accounts                                 | ✅         |
+| P4     | **Account Management** | Sign In                  | Login to Account                     | Users can sign into their accounts                               | ✅         |
+| P5     | **Account Management** | Logout                   | Logout from Account                  | Signed-in Users can logout and receive confirmation              | ✅         |
+| P6     | **Access Control**   | Unauthorized Access       | Access Restricted Pages             | Logged-out users cannot access application features              | ✅         |
+| P7     | **Feedback**         | Error Handling            | Invalid Actions                     | Users receive appropriate feedback for invalid actions           | ✅         |
+| P8     | **Feedback**         | Success Messages         | Successful Actions                  | Users receive confirmation for successful actions                | ✅         |
+| P9     | **Notifications**    | Logout Notification      | Logout Confirmation                 | Users receive notification upon successful logout                | ✅         |
 
 
-- Profile and Inbox model instances are created upon User Instance creation. 
+- Profile model instances are created upon User Instance creation. 
 
 ### Validator Testing 
 
 | **ID** | **CATEGORY**    | **TEST**              | **ACTION**                                  | **RESULT**                            |
 |--------|-----------------|-----------------------|---------------------------------------------|--------------------------------------------|
-| T1     | **Task**        | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
-| TM1    | **Task Messages** | pass pep8 validator | Run all related files through the validator |  ✅                                         |
-| P1     | **Profiles**    | pass pep8 validator  | Run all related files through the validator |               ✅                     |
-| I1     | **Inbox**       | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
-| UM1    | **User Messages** | pass pep8 validator| Run all related files through the validator |  ✅                                         |
+| T1     | **Task**        | pass pep8 validator  | Run all related files from task app through the validator |  ✅                                         |
+| TM1    | **Task Messages** | pass pep8 validator | Run all related files from task_messages app through the validator |  ✅                                         |
+| P1     | **Profiles**    | pass pep8 validator  | Run all related files from profiles app through the validator |               ✅                     |
 | TP1    | **Task Pilot**  | pass pep8 validator  | Run all related files through the validator |  ✅                                         |
 
 
