@@ -1,6 +1,35 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+"""
+A model representing a task with various attributes.
+
+Attributes:
+- title (CharField): The title of the task.
+- description (TextField): Detailed description of the task.
+- due_date (DateField): Deadline for completing the task.
+- priority (CharField): Priority level of the task
+  (choices: 'High', 'Medium', 'Low').
+- category (CharField): Category of the task
+  (choices: 'Work', 'Personal', 'Study', 'Other').
+- state (CharField): Current state of the task
+  (choices: 'In Progress', 'Done').
+- created_at (DateTimeField): Date and time when the task was created.
+- owner (ForeignKey to User): The user who owns this task.
+- assigned_users (ManyToManyField to User): Users assigned to work on this task.
+- state_changed_by (ForeignKey to User):
+  User who last changed the state of the task.
+- task_visibility (CharField): Visibility setting of the task
+  (choices: 'Private', 'Public').
+- task_messages (ManyToManyField to 'task_message.TaskMessage'):
+  Messages related to this task.
+
+Note:
+- Tasks can have multiple assigned users and messages.
+- Visibility determines whether a task is visible to all users or
+  restricted to its owner and assigned users.
+"""
+
 
 class Task(models.Model):
     PRIORITY_CHOICES = [
@@ -49,4 +78,3 @@ class Task(models.Model):
                                        default='Private')
     task_messages = models.ManyToManyField('task_message.TaskMessage',
                                            blank=True)
-                                           

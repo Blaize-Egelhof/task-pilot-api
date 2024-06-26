@@ -12,6 +12,35 @@ from taskpilot.permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 from .serializers import UserSerializer
 
+"""
+Django views for managing tasks and related operations.
+
+Includes API endpoints for:
+- Retrieving tasks related to a specific user (`RelatedTasks`).
+- Viewing details of a task (`TaskView`).
+- Creating a new task (`TaskCreation`).
+- Deleting an existing task (`TaskDeletion`).
+- Updating an existing task (`TaskUpdate`).
+- Fetching all users (`GrabAllUser`) except the owner for task assignment.
+
+Each view uses Django REST Framework classes and handles permissions,
+serialization, and HTTP request/response processing.
+
+Attributes:
+- `permission_classes`: Defines the permissions required to access each endpoint.
+- `serializer_class`: Serializer used to convert data to and from JSON format.
+
+Methods:
+- `get`: Handles HTTP GET requests to retrieve data.
+- `post`: Handles HTTP POST requests to create new data.
+- `put`: Handles HTTP PUT requests to update existing data.
+- `delete`: Handles HTTP DELETE requests to remove existing data.
+
+Note:
+- Error responses with HTTP status codes 403 (Forbidden)
+  indicate insufficient permissions.
+"""
+
 
 class RelatedTasks(APIView):
     permission_classes = (IsAuthenticated,)
@@ -99,6 +128,7 @@ class TaskUpdate(APIView):
                             'You do not have permission to update this task.'},
                             status=status.HTTP_403_FORBIDDEN)
 
+
 class GrabAllUser(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
@@ -115,5 +145,3 @@ class GrabAllUser(APIView):
         else:
             return Response({'detail': 'You do not have permission to update this task.'},
                             status=status.HTTP_403_FORBIDDEN)
-
-
