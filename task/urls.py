@@ -22,5 +22,7 @@ urlpatterns = [
     path('update-task/<int:pk>', views.TaskUpdate.as_view(),
          name='update-task'),
     path('users/<int:pk>', views.GrabExcludingUser.as_view(),
-         name='all-users')
+         name='all-users'),
+    path('fetch-user-names', views.FetchUserNames.as_view(),
+         name='fetch_user_names'),
 ]
