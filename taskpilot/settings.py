@@ -49,8 +49,6 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'profiles',
     'task',
-    'inbox',
-    'user_messages',
     'task_message',
 ]
 

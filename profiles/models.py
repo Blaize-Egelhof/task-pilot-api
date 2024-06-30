@@ -40,9 +40,9 @@ class Profile(models.Model):
         Returns the count of tasks where the user is ,
         assigned and task visibility is 'Public'.
         """
-    return self.owner.assigned_tasks.filter(
-        task_visability='Public'
-    ).count()
+        return self.owner.assigned_tasks.filter(
+            task_visability='Public'
+        ).count()
 
     """
     Signal receiver function to create a Profile,
