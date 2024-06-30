@@ -129,12 +129,13 @@ class TaskUpdate(APIView):
                             status=status.HTTP_403_FORBIDDEN)
 
 
-class GrabAllUser(APIView):
+class GrabExcludingUser(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
 
     def get(self, request, pk):
         task = get_object_or_404(Task, pk=pk)
-        users = User.objects.exclude(task__pk=pk)
+        assigned_user_ids = task.assigned_users.values_list('id', flat=True)
+        users = User.objects.exclude(id__in=assigned_user_ids)
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
