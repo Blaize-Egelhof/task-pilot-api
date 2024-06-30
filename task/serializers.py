@@ -31,13 +31,14 @@ class TaskSerializer(serializers.ModelSerializer):
     task_messages = TaskMessageSerializer(many=True, read_only=True)
     assigned_users = serializers.PrimaryKeyRelatedField(
            queryset=User.objects.all(), many=True, required=False)
+    assigned_usernames = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
         fields = [
             'id', 'owner', 'created_at', 'due_date', 'priority', 'category',
             'state', 'assigned_users', 'state_changed_by', 'task_visability',
-            'title', 'is_owner', 'task_messages', 'description',
+            'title', 'is_owner', 'task_messages', 'description','assigned_usernames',
         ]
 
     """
@@ -46,6 +47,10 @@ class TaskSerializer(serializers.ModelSerializer):
     Returns:
     - bool: True if the current user matches the task's owner, False otherwise.
     """
+
+    def get_assigned_usernames(self, obj):
+        assigned_users = obj.assigned_users.all()
+        return UserSerializer(assigned_users, many=True).data
 
     def get_is_owner(self, obj):
         request = self.context['request']

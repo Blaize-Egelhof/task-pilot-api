@@ -139,13 +139,3 @@ class GrabExcludingUser(APIView):
         users = User.objects.exclude(id__in=assigned_user_ids)
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
-
-class FetchUserNames(APIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    
-    def get(self, request, *args, **kwargs):
-        user_ids = request.query_params.getlist('ids[]', [])
-        users = User.objects.filter(id__in=user_ids)
-        serializer = self.serializer_class(users, many=True)
-        return Response(serializer.data)
