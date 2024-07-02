@@ -7,8 +7,7 @@ from django.db.models import Q
     A model representing a user profile linked to a User instance.
 
     Each user has a single Profile instance associated with their account,
-    allowing customization of profile details such as biography, image, and
-    tracking of owned and joined tasks.
+    allowing customization of profile details such as biography and image.
 """
 
 
@@ -25,24 +24,6 @@ class Profile(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-
-    @property
-    def owned_tasks_count(self):
-        """
-        Returns the count of tasks owned by the user with task,
-        visibility set to 'Public'.
-        """
-        return self.owner.owned_tasks.filter(task_visability='Public').count()
-
-    @property
-    def joined_tasks_count(self):
-        """
-        Returns the count of tasks where the user is ,
-        assigned and task visibility is 'Public'.
-        """
-        return self.owner.assigned_tasks.filter(
-            task_visability='Public'
-        ).count()
 
     """
     Signal receiver function to create a Profile,
