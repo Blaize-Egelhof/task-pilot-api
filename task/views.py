@@ -139,3 +139,22 @@ class GrabExcludingUser(APIView):
         users = User.objects.exclude(id__in=assigned_user_ids)
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
+
+class LeaveTask(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = TaskSerializer
+
+    def put(self, request, pk):
+        task = get_object_or_404(Task, pk=pk)
+        user_requesting = request.user
+
+        if user_requesting in task.assigned_users.all():
+            task.assigned_users.remove(user_requesting)
+            task.save()
+            self.serializer_class = TaskSerializer(task)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(
+                {'error': 'Could not leave the task. Are you sure you are a member of this task?'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
