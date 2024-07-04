@@ -14,40 +14,68 @@
 
 6. As a user, I want to organize tasks by status or ownership for better organization.
 
+7. As a user, I want to be able to log out from the navigation bar so that I can securely end my session from any page.
+
+8. As a user , I want to be able to quickly create a task from my navigation bar for convienience.
+
+9. As a user , I want to be able to go back to my home page to view all my related tasks for convienience. 
+
+10. As a user , I want to recieve feedback via the navigation bar to let me know if Ive signed in correctly
+
+11. As a user , I want to visit my own profile through the navigation bar in order to quickly view and modify my profile data.
+
 ### Epic 3: Task
-7. As a user, I want to create tasks efficiently to tackle challenges effectively.
+12. As a user, I want to create tasks efficiently to tackle challenges effectively.
 
-8. As a user, I want to view all tasks related to me to keep track of my responsibilities.
+13. As a user, I want to view all tasks related to me to keep track of my responsibilities.
 
-9. As a user, I want detailed task information to understand tasks better.
+14. As a user, I want detailed task information to understand tasks better.
 
-10. As a user, I want to comment on tasks to contribute to their resolution.
+15. As a user, I want to comment on tasks to contribute to their resolution.
 
-11. As a user, I want to change my task's status to notify all members of progress.
+16. As a user, I want to change my task's status to notify all members of progress.
 
-12. As a user, I want to delete my task's comments to manage incoming responses.
+17. As a user, I want to delete my task's comments to manage incoming responses.
 
-13. As a user, I want to delete a task I own if it is no longer necessary.
+18. As a user, I want to delete a task I own if it is no longer necessary.
 
-14. As a user, I want to add other users to my tasks to collaborate on solutions.
+19. As a user, I want to add other users to my tasks to collaborate on solutions.
 
-15. As a user, I want to leave tasks or groups to manage my workload and commitments.
+20. As a user, I want to leave tasks or groups to manage my workload and commitments.
 
-16. As a user, I want to mark tasks as overdue to prioritize urgent tasks.
+21. As a user, I want to mark tasks as overdue to prioritize urgent tasks.
+
+22. As a user, I want to assign due dates to tasks to ensure timely completion.
+
+23. As a user, I want to set task priorities to indicate their importance.
+
+24. As a user, I want to filter tasks by status, priority, and due date to quickly find relevant tasks.
+
+25. As a user, I want to view a history of changes made to tasks to track their progress.
+
+26. As a user, I want to sort tasks by different criteria (e.g., due date, priority) to organize my workflow.
+
+27. As a user , I want to recieve visual feedback if a task is overdue , to thus manage my workload accordingly.
 
 ### Epic 4: Notifications
-17. As a user, I want to receive notifications for completed processes or errors.
+28. As a user, I want to receive pop-up notifications warning me of events such as logging out or leaving a task.
 
 ### Epic 5: Profiles
-18. As a user, I want to view my own or others' profiles to see publicly joined and created tasks.
+29. As a user, I want to view my own or others' profiles to see publicly joined and created tasks.
 
 19. As a user, I want to see stats via user profiles to understand task creation, participation, and contributions.
 
-20. As a user, I want to set my avatar to personalize my profile.
+30. As a user, I want to set my avatar to personalize my profile.
 
-21. As a user, I want to update my bio to share information about myself.
+31. As a user, I want to update my bio to share information about myself.
 
-22. As a user, I want to view other users' avatars for quick recognition.
+32. As a user, I want to view other users' avatars for quick recognition.
 
 ### Epic 6: Viewport Viewing
-23. As a user, I want to access and use Task Pilot seamlessly on any device, including mobile, tablet, laptop, and desktop screens.
+33. As a user, I want to access and use Task Pilot seamlessly on any device, including mobile, tablet, laptop, and desktop screens.
+
+34. As a user, I want to use all features of Task Pilot on any device without functionality loss to ensure a consistent experience.
+
+35. As a user, I want the application to load quickly on all devices to reduce wait times and improve efficiency.
+
+36. As a user, I want to be able to switch between devices seamlessly, continuing my work without any interruptions.

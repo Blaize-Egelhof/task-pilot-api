@@ -26,9 +26,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
-
-ALLOWED_HOSTS = ['8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
-                 'task-pilot-api-323c9bc2bc87.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
+    'task-pilot-api-323c9bc2bc87.herokuapp.com'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -66,8 +67,8 @@ MIDDLEWARE = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-   "django.contrib.auth.backends.ModelBackend",
-   "allauth.account.auth_backends.AuthenticationBackend"
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
 )
 
 ACCOUNT_EMAIL_REQUIRED = False
@@ -103,6 +104,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %b %Y',
 }
+
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
@@ -116,8 +118,8 @@ if 'CLIENT_ORIGIN' in os.environ:
     ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-        r"^https://.*\.gitpod\.io$",
-    ]
+    r"^https://.*\.gitpod\.io$",
+]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -134,12 +136,12 @@ REST_AUTH_SERIALIZERS = {
 WSGI_APPLICATION = 'taskpilot.wsgi.application'
 
 if 'DEV' in os.environ:
-     DATABASES = {
-         'default': {
-             'ENGINE': 'django.db.backends.sqlite3',
-             'NAME': BASE_DIR / 'db.sqlite3',
-         }
-     }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -147,18 +149,10 @@ else:
     print('Connected!')
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 LANGUAGE_CODE = 'en-us'
@@ -169,11 +163,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
+    'all_applications': True,
+    'group_models': True,
 }

@@ -16,7 +16,8 @@ Attributes:
   (choices: 'In Progress', 'Done').
 - created_at (DateTimeField): Date and time when the task was created.
 - owner (ForeignKey to User): The user who owns this task.
-- assigned_users (ManyToManyField to User): Users assigned to work on this task.
+- assigned_users (ManyToManyField to User):
+  Users assigned to work on this task.
 - state_changed_by (ForeignKey to User):
   User who last changed the state of the task.
 - task_visibility (CharField): Visibility setting of the task

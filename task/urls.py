@@ -5,7 +5,7 @@ from . import views
 URL patterns for task management endpoints.
 
 Defines URL routes to handle various operations related to tasks,
-including creation, deletion, updating, and viewing tasks.
+including creation, deletion, updating,viewing tasks and leaving tasks.
 Also includes endpoints for fetching related tasks and retrieving
 all users.
 """

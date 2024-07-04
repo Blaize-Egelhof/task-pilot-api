@@ -18,7 +18,8 @@ class TaskSerializer(serializers.ModelSerializer):
       Primary keys of users assigned to the task.
 
     Methods:
-    - get_is_owner: Retrieves whether the current user is the owner of the task.
+    - get_is_owner: Retrieves whether the current user is
+      the owner of the task.
     - update:Updates a task instance with validated data,
       including managing assigned users.
 
@@ -38,7 +39,8 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at', 'due_date', 'priority', 'category',
             'state', 'assigned_users', 'state_changed_by', 'task_visability',
-            'title', 'is_owner', 'task_messages', 'description','assigned_usernames',
+            'title', 'is_owner', 'task_messages', 'description',
+            'assigned_usernames',
         ]
 
     """

@@ -22,12 +22,14 @@ Includes API endpoints for:
 - Deleting an existing task (`TaskDeletion`).
 - Updating an existing task (`TaskUpdate`).
 - Fetching all users (`GrabAllUser`) except the owner for task assignment.
+-Leaving a given task(`LeaveTask`)except for owner of task
 
 Each view uses Django REST Framework classes and handles permissions,
 serialization, and HTTP request/response processing.
 
 Attributes:
-- `permission_classes`: Defines the permissions required to access each endpoint.
+- `permission_classes`: Defines the permissions
+   required to access each endpoint.
 - `serializer_class`: Serializer used to convert data to and from JSON format.
 
 Methods:
@@ -140,6 +142,7 @@ class GrabExcludingUser(APIView):
         serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
 
+
 class LeaveTask(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = TaskSerializer
@@ -155,6 +158,11 @@ class LeaveTask(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(
-                {'error': 'Could not leave the task. Are you sure you are a member of this task?'},
+                {
+                    'error': (
+                        'Could not leave the task. '
+                        'Are you sure you are a member of this task?'
+                    )
+                },
                 status=status.HTTP_400_BAD_REQUEST
             )
