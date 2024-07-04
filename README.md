@@ -1,8 +1,8 @@
 # Task Pilot - API
 
 #### DEPLOYED BACKEND API RENDER [LINK](https://task-pilot-api-323c9bc2bc87.herokuapp.com/) 
-#### DEPLOYED FRONTEND RENDER [LINK - LIVE SITE]()
-#### DEPLOYED FRONTEND [REPOSITORY]()
+#### DEPLOYED FRONTEND RENDER [LINK - LIVE SITE](https://task-pilot-e84398da7501.herokuapp.com/)
+#### DEPLOYED FRONTEND [REPOSITORY](https://github.com/Blaize-Egelhof/task-pilot)
 
 ## Table of Contents
 + [User Stories](#user-stories "User Stories")
@@ -38,26 +38,31 @@ These apps were designed to manage a large audience, with the Inbox app acting l
 
 ### Manual Testing:
 
-| **ID** | **CATEGORY**         | **TEST**                  | **ACTION**                           | **EXPECTATION**                                                 | **RESULT** |
-|--------|----------------------|---------------------------|--------------------------------------|-----------------------------------------------------------------|------------|
-| T1     | **Tasks**            | Create                    | Create Task Object                   | Signed-in Users can create tasks                                 | ✅         |
-| T2     | **Tasks**            | Edit                      | Edit Created Task                   | Signed-in Users can modify their tasks                           | ✅         |
-| T3     | **Tasks**            | Add Member                | Add User as Task Member              | Task Owners can add members to their tasks                       | ✅         |
-| T4     | **Tasks**            | Delete                    | Delete Task Object                   | Only Owners can delete their tasks                               | ✅         |
-| T5     | **Tasks**            | Comment                   | Add Comment to Task                  | Users can comment on tasks                                       | ✅         |
-| T6     | **Tasks**            | Comment                   | Delete Own Comment                   | Users can delete their own comments on tasks                     | ✅         |
-| T7     | **Tasks**            | Comment                   | View Commentator Profile            | Users can view profiles of comment contributors                  | ✅         |
-| T8     | **Tasks**            | Organize                  | Filter Tasks                        | Users can filter tasks by ownership and status                   | ✅         |
-| T9     | **Tasks**            | View Details              | View Task Details                   | Owners or members can view task details and dialogue             | ✅         |
-| P1     | **Profiles**         | Edit                      | Edit Profile                         | Profile owners can edit their profile details                    | ✅         |
-| P2     | **Profiles**         | Create                    | Create Profile Object                | New Users create profiles linked to their accounts               | ✅         |
-| P3     | **Account Management** | Create Account          | Create User Account                  | New visitors can create accounts                                 | ✅         |
-| P4     | **Account Management** | Sign In                  | Login to Account                     | Users can sign into their accounts                               | ✅         |
-| P5     | **Account Management** | Logout                   | Logout from Account                  | Signed-in Users can logout and receive confirmation              | ✅         |
-| P6     | **Access Control**   | Unauthorized Access       | Access Restricted Pages             | Logged-out users cannot access application features              | ✅         |
-| P7     | **Feedback**         | Error Handling            | Invalid Actions                     | Users receive appropriate feedback for invalid actions           | ✅         |
-| P8     | **Feedback**         | Success Messages         | Successful Actions                  | Users receive confirmation for successful actions                | ✅         |
-| P9     | **Notifications**    | Logout Notification      | Logout Confirmation                 | Users receive notification upon successful logout                | ✅         |
+| **ID** | **CATEGORY**         | **TEST**                | **ACTION**                           | **EXPECTATION**                                                 | **RESULT** |
+|--------|----------------------|-------------------------|--------------------------------------|-----------------------------------------------------------------|------------|
+| T1     | **Tasks**            | Create                  | Create Task Object                   | Signed-in Users can create tasks                                 | ✅         |
+| T2     | **Tasks**            | Edit                    | Edit Created Task                   | Signed-in Users can modify their tasks                           | ✅         |
+| T3     | **Tasks**            | Add Member              | Add User as Task Member              | Task Owners can add members to their tasks                       | ✅         |
+| T4     | **Tasks**            | Delete                  | Delete Task Object                   | Only Owners can delete their tasks                               | ✅         |
+| T5     | **Tasks**            | Comment                 | Add Comment to Task                  | Users can comment on tasks                                       | ✅         |
+| T6     | **Tasks**            | Comment                 | Delete Own Comment                   | Users can delete their own comments on tasks                     | ✅         |
+| T7     | **Tasks**            | Comment                 | View Commentator Profile            | Users can view profiles of comment contributors                  | ✅         |
+| T8     | **Tasks**            | Organize                | Filter Tasks                        | Users can filter tasks by ownership and status                   | ✅         |
+| T9     | **Tasks**            | View Details            | View Task Details                   | Owners or members can view task details and dialogue             | ✅         |
+| P1     | **Profiles**         | Edit                    | Edit Profile                         | Profile owners can edit their profile details                    | ✅         |
+| P2     | **Profiles**         | Create                  | Create Profile Object                | New Users create profiles linked to their accounts               | ✅         |
+| P3     | **Account Management** | Create Account        | Create User Account                  | New visitors can create accounts                                 | ✅         |
+| P4     | **Account Management** | Sign In                | Login to Account                     | Users can sign into their accounts                               | ✅         |
+| P5     | **Account Management** | Logout                 | Logout from Account                  | Signed-in Users can logout and receive confirmation              | ✅         |
+| P6     | **Access Control**   | Unauthorized Access     | Access Restricted Pages             | Logged-out users cannot access application features              | ✅         |
+| P7     | **Feedback**         | Error Handling          | Invalid Actions                     | Users receive appropriate feedback for invalid actions           | ✅         |
+| P8     | **Notifications**    | Logout Notification    | Logout Confirmation                 | Users receive notification upon successful logout                | ✅         |
+| T10    | **Tasks**            | Task Priority          | Sort Tasks by Priority              | Tasks are sorted correctly by priority                           | ✅         |
+| T11    | **Tasks**            | Task Due Dates         | Sort Tasks by Due Dates             | Tasks are displayed and sorted correctly based on due dates      | ✅         |
+| P9     | **Profiles**         | Avatar Upload          | Upload Avatar                       | Users can upload and update their avatar successfully            | ✅         |
+| P10    | **Access Control**   | Role-Based Access      | Test Different User Roles           | Access permissions are enforced correctly for different roles    | ✅         |
+| P11    | **Session Management** | Session Expiration   | Verify Session Expiration           | Sessions expire correctly based on settings                      | ✅         |
+| P12    | **Session Management** | Expired Sessions     | Handle Expired Sessions             | Expired sessions are handled correctly                          | ✅         |
 
 
 - Profile model instances are created upon User Instance creation. 
