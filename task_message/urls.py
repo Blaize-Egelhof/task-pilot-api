@@ -4,13 +4,17 @@ from . import views
 """
 URL patterns for task message-related views.
 
-These patterns map specific endpoints to corresponding view classes for handling
-sending, viewing, and deleting task messages.
+These patterns map specific endpoints to corresponding view
+classes for handling sending, viewing, and deleting task messages.
+
 
 Endpoints:
-- 'task-messages-send/<int:pk>': Maps to TaskMessageSend view for sending task messages.
-- 'task-messages-view/<int:pk>': Maps to TaskMessageView view for viewing task messages.
-- 'task-message-delete/':Maps to TaskMessageDelete view for deleting
+- 'task-messages-send/<int:pk>': Maps
+   to TaskMessageSend view for sending task messages.
+- 'task-messages-view/<int:pk>':
+   Maps to TaskMessageView view for viewing task messages.
+- 'task-message-delete/':
+   Maps to TaskMessageDelete view for deleting
    task messages.
 """
 
