@@ -28,7 +28,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         """Determines if the current user is the owner of the profile."""
         request = self.context.get('request')
-        return request.user == obj.owner
+        if request and request.user:
+            return request.user == obj.owner
+        return False
 
     def get_owned_tasks_count(self, obj):
         """
