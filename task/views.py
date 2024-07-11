@@ -154,7 +154,7 @@ class LeaveTask(APIView):
         if user_requesting in task.assigned_users.all():
             task.assigned_users.remove(user_requesting)
             task.save()
-            self.serializer_class = TaskSerializer(task)
+            serializer = self.serializer_class(task)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(
