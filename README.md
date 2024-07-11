@@ -257,11 +257,6 @@ CORS_ALLOW_METHODS = list(default_methods)
 CSRF_TRUSTED_ORIGINS = [os.environ.get(
     'CLIENT_ORIGIN_DEV', 'CLIENT_ORIGIN',
 )]
-```
-- In addition, Johan also suggested to add the following import statement at the top of the settings.py file:
-```
-from corsheaders.defaults import default_headers, default_methods
-```
 
 ### Final requirements:
 21. Created a Procfile, & added the following two lines:
@@ -287,6 +282,7 @@ pip3 freeze --local > requirements.txt
 ### Content:
 - The creation of this API database was provided through the step by step guide of the C.I. DRF-API walkthrough project.
 - All classes & functions have been credited.
+- Thank you to my mentor Lauren Nicole for helping me throughout this project and helping me stay on the right track ! YOU ARE AMAZING.
 
 ### Media:
 - All Images have been used from CleanPNG for this back-end repository. [CleanPNG](https://www.cleanpng.com/)
