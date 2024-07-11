@@ -10,45 +10,21 @@ from rest_framework import status
 from taskpilot.permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 
-"""
-Views for handling task messages related operations.
-
-TaskMessageSend:
-- POST: Creates and sends a new task message associated with a specific task.
-  Requires authentication.
-  Parameters:
-  - pk (int): Primary key of the associated task.
-  Body Data:
-  - sender (int): ID of the user sending the message
-    (automatically set to current user).
-  - associated_task (int): ID of the associated task.
-  - context (str, optional): Message content.
-  Returns:
-  - HTTP 201 Created with serialized data if successful.
-  - HTTP 400 Bad Request with error details if data is invalid.
-
-TaskMessageView:
-- GET: Retrieves all task messages associated with a specific task.
-  Requires authentication.
-  Parameters:
-  - pk (int): Primary key of the associated task.
-  Returns:
-  - HTTP 200 OK with serialized task message data.
-
-TaskMessageDelete:
-- POST: Deletes a specific task message.
-  Requires authentication.
-  Parameters:
-  - pk (int): Primary key of the task message to be deleted.
-  Returns:
-  - HTTP 200 OK with success message if deletion is successful.
-  - HTTP 404 Not Found if the task message does not exist.
-  - HTTP 403 Forbidden if the current user does not have permission
-    to delete the task message.
-"""
-
 
 class TaskMessageSend(APIView):
+    """
+    API view to create and send a new task message associated with a specific
+    task.
+
+    Attributes:
+    - `serializer_class`: Uses `TaskMessageSerializer` for serializing task
+       messages.
+    - `permission_classes`: Requires the user to be authenticated.
+
+    Methods:
+    - `post(request, pk)`: Handles HTTP POST requests to create and send a
+      new task message.
+    """
     serializer_class = TaskMessageSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -85,6 +61,18 @@ class TaskMessageSend(APIView):
 
 
 class TaskMessageView(APIView):
+    """
+    API view to retrieve all task messages associated with a specific task.
+
+    Attributes:
+    - `serializer_class`: Uses `TaskMessageSerializer` for serializing
+       task messages.
+    - `permission_classes`: Requires the user to be authenticated.
+
+    Methods:
+    - `get(request, pk)`: Handles HTTP GET requests to retrieve all
+      task messages.
+    """
     serializer_class = TaskMessageSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -100,6 +88,17 @@ class TaskMessageView(APIView):
 
 
 class TaskMessageDelete(APIView):
+    """
+    API view to delete a specific task message.
+
+    Attributes:
+    - `serializer_class`: Uses `TaskMessageSerializer` for
+       serializing task messages.
+    - `permission_classes`: Requires the user to be authenticated.
+
+    Methods:
+    - `post(request, pk)`: Handles HTTP POST requests to delete a task message.
+    """
     permission_classes = (IsAuthenticated,)
     serializer_class = TaskMessageSerializer
 

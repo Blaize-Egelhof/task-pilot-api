@@ -57,25 +57,29 @@
 
 27. As a user , I want to recieve visual feedback if a task is overdue , to thus manage my workload accordingly.
 
+28. As a user , I want to be able to mark a task message as important if I am the task owner , in order to allow my comment to stand out from the other task comments.
+
 ### Epic 4: Notifications
-28. As a user, I want to receive pop-up notifications warning me of events such as logging out or leaving a task.
+29. As a user, I want to receive pop-up notifications warning me of events such as logging out or leaving a task.
+
+30. As a user , I want to recieve notifications when signing in/up or creating/editing any model instance via the frontend.
 
 ### Epic 5: Profiles
-29. As a user, I want to view my own or others' profiles to see publicly joined and created tasks.
+31. As a user, I want to view my own or others' profiles to see publicly joined and created tasks.
 
-19. As a user, I want to see stats via user profiles to understand task creation, participation, and contributions.
+32. As a user, I want to see stats via user profiles to understand task creation, participation, and contributions.
 
-30. As a user, I want to set my avatar to personalize my profile.
+33. As a user, I want to set my avatar to personalize my profile.
 
-31. As a user, I want to update my bio to share information about myself.
+34. As a user, I want to update my bio to share information about myself.
 
-32. As a user, I want to view other users' avatars for quick recognition.
+35. As a user, I want to view other users' avatars for quick recognition.
 
 ### Epic 6: Viewport Viewing
-33. As a user, I want to access and use Task Pilot seamlessly on any device, including mobile, tablet, laptop, and desktop screens.
+36. As a user, I want to access and use Task Pilot seamlessly on any device, including mobile, tablet, laptop, and desktop screens.
 
-34. As a user, I want to use all features of Task Pilot on any device without functionality loss to ensure a consistent experience.
+37. As a user, I want to use all features of Task Pilot on any device without functionality loss to ensure a consistent experience.
 
-35. As a user, I want the application to load quickly on all devices to reduce wait times and improve efficiency.
+38. As a user, I want the application to load quickly on all devices to reduce wait times and improve efficiency.
 
-36. As a user, I want to be able to switch between devices seamlessly, continuing my work without any interruptions.
+39. As a user, I want to be able to switch between devices seamlessly, continuing my work without any interruptions.

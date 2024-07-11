@@ -43,21 +43,26 @@ class TaskSerializer(serializers.ModelSerializer):
             'assigned_usernames',
         ]
 
-    """
-    Checks if the current user is the owner of the task.
-
-    Returns:
-    - bool: True if the current user matches the task's owner, False otherwise.
-    """
-
     def get_assigned_usernames(self, obj):
+        """
+        Function to grab all users associated with a task by ID ,
+        and serialize them into user name for front-end use
+        """
         assigned_users = obj.assigned_users.all()
         return UserSerializer(assigned_users, many=True).data
 
     def get_is_owner(self, obj):
+        """
+        Checks if the current user is the owner of the task.
+
+        Returns:
+        - bool: True if the current user matches the task's owner,
+          False otherwise.
+        """
         request = self.context['request']
         return request.user == obj.owner
 
+    def update(self, instance, validated_data):
         """
         Updates a task instance with validated data,
         including managing assigned users.
@@ -65,8 +70,6 @@ class TaskSerializer(serializers.ModelSerializer):
         Returns:
         - Task: Updated task instance.
         """
-
-    def update(self, instance, validated_data):
         assigned_users = validated_data.pop('assigned_users', None)
         instance = super().update(instance, validated_data)
 
@@ -75,6 +78,8 @@ class TaskSerializer(serializers.ModelSerializer):
 
         return instance
 
+
+class UserSerializer(serializers.ModelSerializer):
     """
     Serializer for converting User model instances to and from JSON format.
 
@@ -82,9 +87,6 @@ class TaskSerializer(serializers.ModelSerializer):
     - id (IntegerField): The unique identifier for the user.
     - username (CharField): The username of the user.
     """
-
-
-class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username']

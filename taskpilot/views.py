@@ -6,29 +6,26 @@ from .settings import (
     JWT_AUTH_SECURE,
 )
 
-"""
-Endpoint for the root of the TaskPilot API.
-
-Returns a simple JSON response with a welcome message.
-"""
-
 
 @api_view()
 def root_route(request):
+    """
+    Endpoint for the root of the TaskPilot API.
+
+    Returns a simple JSON response with a welcome message.
+    """
     return Response({
         "message": "Welcome to my TaskPilot API!"
     })
 
 
-"""
-Endpoint to log out a user and clear authentication cookies.
-
-Clears JWT authentication and refresh cookies from the client's browser.
-"""
-
-
 @api_view(['POST'])
 def logout_route(request):
+    """
+    Endpoint to log out a user and clear authentication cookies.
+
+    Clears JWT authentication and refresh cookies from the client's browser.
+    """
     response = Response(
         {'message': 'Logged out successfully! Cookies cleared.'},
         status=200

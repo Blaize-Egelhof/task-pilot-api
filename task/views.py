@@ -12,39 +12,19 @@ from taskpilot.permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 from .serializers import UserSerializer
 
-"""
-Django views for managing tasks and related operations.
-
-Includes API endpoints for:
-- Retrieving tasks related to a specific user (`RelatedTasks`).
-- Viewing details of a task (`TaskView`).
-- Creating a new task (`TaskCreation`).
-- Deleting an existing task (`TaskDeletion`).
-- Updating an existing task (`TaskUpdate`).
-- Fetching all users (`GrabAllUser`) except the owner for task assignment.
--Leaving a given task(`LeaveTask`)except for owner of task
-
-Each view uses Django REST Framework classes and handles permissions,
-serialization, and HTTP request/response processing.
-
-Attributes:
-- `permission_classes`: Defines the permissions
-   required to access each endpoint.
-- `serializer_class`: Serializer used to convert data to and from JSON format.
-
-Methods:
-- `get`: Handles HTTP GET requests to retrieve data.
-- `post`: Handles HTTP POST requests to create new data.
-- `put`: Handles HTTP PUT requests to update existing data.
-- `delete`: Handles HTTP DELETE requests to remove existing data.
-
-Note:
-- Error responses with HTTP status codes 403 (Forbidden)
-  indicate insufficient permissions.
-"""
-
 
 class RelatedTasks(APIView):
+
+    """
+    API view to retrieve tasks related to a specific user requesting.
+
+    Attributes:
+    - `permission_classes`: Requires the user to be authenticated.
+    - `serializer_class`: Uses `TaskSerializer` for serializing tasks.
+
+    Methods:
+    - `get`: Handles HTTP GET requests to fetch tasks owned or joined by the user.
+    """
     permission_classes = (IsAuthenticated,)
     serializer_class = TaskSerializer
 
@@ -61,6 +41,16 @@ class RelatedTasks(APIView):
 
 
 class TaskView(APIView):
+    """
+    API view to retrieve details of a specific task.
+
+    Attributes:
+    - `serializer_class`: Uses `TaskSerializer` for serializing tasks.
+    - `permission_classes`: Requires the user to be authenticated.
+
+    Methods:
+    - `get`: Handles HTTP GET requests to retrieve details of a task.
+    """
     serializer_class = TaskSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -80,6 +70,16 @@ class TaskView(APIView):
 
 
 class TaskCreation(APIView):
+    """
+    API view to create a new task.
+
+    Attributes:
+    - `serializer_class`: Uses `TaskSerializer` for serializing tasks.
+    - `permission_classes`: Requires the user to be authenticated.
+
+    Methods:
+    - `post`: Handles HTTP POST requests to create a new task.
+    """
     serializer_class = TaskSerializer
     permission_classes = (IsAuthenticated,)
 
@@ -95,6 +95,16 @@ class TaskCreation(APIView):
 
 
 class TaskDeletion(APIView):
+    """
+    API view to delete an existing task.
+
+    Attributes:
+    - `serializer_class`: Uses `TaskSerializer` for serializing tasks.
+    - `permission_classes`: Uses `IsOwnerOrReadOnly` to check ownership.
+
+    Methods:
+    - `delete`: Handles HTTP DELETE requests to delete a task.
+    """
     serializer_class = TaskSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
@@ -110,6 +120,16 @@ class TaskDeletion(APIView):
 
 
 class TaskUpdate(APIView):
+    """
+    API view to update an existing task.
+
+    Attributes:
+    - `serializer_class`: Uses `TaskSerializer` for serializing tasks.
+    - `permission_classes`: Requires the user to be authenticated.
+
+    Methods:
+    - `put`: Handles HTTP PUT requests to update a task.
+    """
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
 
@@ -132,6 +152,16 @@ class TaskUpdate(APIView):
 
 
 class GrabExcludingUser(APIView):
+    """
+    API view to fetch all users excluding those assigned to a specific task.
+
+    Attributes:
+    - `serializer_class`: Uses `UserSerializer` for serializing users.
+    - `permission_classes`: Requires the user to be authenticated.
+
+    Methods:
+    - `get`: Handles HTTP GET requests to fetch users not assigned to the task.
+    """
     permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
 
@@ -144,6 +174,16 @@ class GrabExcludingUser(APIView):
 
 
 class LeaveTask(APIView):
+    """
+    API view to allow a user to leave a task.
+
+    Attributes:
+    - `serializer_class`: Uses `TaskSerializer` for serializing tasks.
+    - `permission_classes`: Requires the user to be authenticated.
+
+    Methods:
+    - `put`: Handles HTTP PUT requests to remove a user from a task.
+    """
     permission_classes = [IsAuthenticated]
     serializer_class = TaskSerializer
 

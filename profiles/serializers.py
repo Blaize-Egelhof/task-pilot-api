@@ -26,7 +26,10 @@ class ProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'owner', 'created_at', 'is_owner']
 
     def get_is_owner(self, obj):
-        """Determines if the current user is the owner of the profile."""
+        """
+        Function to Determine if the current user,
+        requesting is the owner of the profile.
+        """
         request = self.context.get('request')
         if request and request.user:
             return request.user == obj.owner
@@ -34,14 +37,16 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_owned_tasks_count(self, obj):
         """
-        Returns the count of tasks owned by the user.
+        Returns the count of tasks owned by the
+        user requesting the profile data.
         """
         owner_id = obj.owner.id
         return Task.objects.filter(owner=owner_id).count()
 
     def get_joined_tasks_count(self, obj):
         """
-        Returns the count of tasks where the user is assigned.
+        Returns the count of tasks where the user is assigned,
+        given to a user requesting the profile data
         """
         owner_id = obj.owner.id
         return Task.objects.filter(
