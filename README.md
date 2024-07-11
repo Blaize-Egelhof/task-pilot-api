@@ -19,7 +19,7 @@
   + [Media](#media "Media")
 
 ## User Stories:
-All User Stories have been documented in their own file, the link for which can be found [HERE](https://github.com/users/Blaize-Egelhof/task-pilot-api/static/userstories.md).
+All User Stories have been documented in their own file, the link for which can be found [HERE](https://github.com/Blaize-Egelhof/task-pilot-api/blob/main/static/userstories.md).
 
 I have included links to the [GitHub Issues](https://github.com/Blaize-Egelhof/task-pilot-api/issues) for this project, as well as the [KANBAN board](https://github.com/users/Blaize-Egelhof/projects/3).
 
