@@ -55,12 +55,21 @@ class TaskMessageSend(APIView):
     def post(self, request, pk):
         associated_task = get_object_or_404(Task, pk=pk)
         sender = request.user
+        is_owner = associated_task.owner == sender
 
-        data = {
-            'sender': sender.id,
-            'associated_task': associated_task.id,
-            'context': request.data.get('context', ''),
-        }
+        if is_owner:
+            data = {
+                'sender': sender.id,
+                'associated_task': associated_task.id,
+                'context': request.data.get('context', ''),
+                'important': request.data.get('important', False)
+            }
+        else:
+            data = {
+                'sender': sender.id,
+                'associated_task': associated_task.id,
+                'context': request.data.get('context', ''),
+            }
 
         serializer = self.serializer_class(
             data=data, context={'request': request}
