@@ -22,7 +22,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = 'DEV' in os.environ
+DEBUG = True
+# 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
