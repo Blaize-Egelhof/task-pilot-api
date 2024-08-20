@@ -23,7 +23,8 @@ class RelatedTasks(APIView):
     - `serializer_class`: Uses `TaskSerializer` for serializing tasks.
 
     Methods:
-    - `get`: Handles HTTP GET requests to fetch tasks owned or joined by the user.
+    - `get`: Handles HTTP GET requests to fetch tasks owned or joined by the
+      user.
     """
     permission_classes = (IsAuthenticated,)
     serializer_class = TaskSerializer

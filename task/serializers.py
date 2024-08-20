@@ -59,7 +59,7 @@ class TaskSerializer(serializers.ModelSerializer):
         - bool: True if the current user matches the task's owner,
           False otherwise.
         """
-        request = self.context.get('request') 
+        request = self.context.get('request')
         if request and hasattr(request, 'user'):
             return obj.owner == request.user
         return False
