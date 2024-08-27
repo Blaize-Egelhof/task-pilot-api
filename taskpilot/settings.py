@@ -18,16 +18,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
+    'https://8000-blaizeegelh-taskpilotap-edo3n14thj3.ws.codeinstitute-ide.net'
 ]
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = [
     '8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
-    'task-pilot-api-323c9bc2bc87.herokuapp.com'
+    'task-pilot-api-323c9bc2bc87.herokuapp.com',
+    '8000-blaizeegelh-taskpilotap-edo3n14thj3.ws.codeinstitute-ide.net'
 ]
 
 INSTALLED_APPS = [
