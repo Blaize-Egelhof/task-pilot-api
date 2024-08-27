@@ -22,8 +22,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
-    'https://8000-blaizeegelh-taskpilotap-edo3n14thj3.ws.codeinstitute-ide.net'
+    'https://task-pilot-e84398da7501.herokuapp.com',  # Production client
+    'https://3000-blaizeegelhof-taskpilot-tjg56ep9vv8.ws-eu114.gitpod.io',  # Development client
 ]
 
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -32,9 +32,9 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = [
-    '8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
-    'task-pilot-api-323c9bc2bc87.herokuapp.com',
-    '8000-blaizeegelh-taskpilotap-edo3n14thj3.ws.codeinstitute-ide.net'
+    'task-pilot-api-323c9bc2bc87.herokuapp.com', 
+    'task-pilot-e84398da7501.herokuapp.com',  
+    '3000-blaizeegelhof-taskpilot-tjg56ep9vv8.ws-eu114.gitpod.io', 
 ]
 
 INSTALLED_APPS = [
