@@ -16,6 +16,8 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-blaizeegelh-taskpilotap-pguh9ahf0x4.ws-eu114.gitpod.io',
     'https://8000-blaizeegelh-taskpilotap-edo3n14thj3.ws.codeinstitute-ide.net'
