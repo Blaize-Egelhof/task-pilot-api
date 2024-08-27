@@ -28,7 +28,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = [
@@ -43,9 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinary',
+    'cloudinary_storage',
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
@@ -55,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'cloudinary',
     'profiles',
     'task',
     'task_message',
